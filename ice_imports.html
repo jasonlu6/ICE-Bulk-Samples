@@ -1,0 +1,93 @@
+<!doctype html>
+
+<!-- File: ice_imports.html -->
+<!-- Author: Jason Lu -->
+<!-- Date: 8/3/2017 -->
+<!-- Collaborators: -->
+
+<!-- // Collaboration:
+// Professor Douglas Densmore (dougd@bu.edu)
+// Marliene Pavan (mapavan@bu.edu)
+// Blade Olson (bladeols@bu.edu)
+// Christopher Rodriguez (Fluigi Lab)  -->
+
+<!-- Description: "Hacky Solution" in order to import various ICE Samples "in bulk" -->
+
+<!-- Source (Stack Overflow):
+https://stackoverflow.com/questions/1175347/how-can-i-select-and-upload-
+multiple-files-with-html-and-php-using-http-post  -->
+
+<!-- HTML upload / submit button (multiple files) -->
+<!-- doctype html -->
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <!-- CSS Bootstrap -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <title>Import ICE Samples:</title>
+    </head>
+
+    <body>
+
+        <!-- BDC logo (Aesthetics Purpose) -->
+        
+
+
+        <br></br>
+
+        <button type="button" class="btn btn-primary">Import ICE Samples in Bulk:</button>
+
+    <!-- whitespace -->
+
+        <br></br>
+        <br></br>
+        <br></br>
+
+        <!-- "dummy form" for file uploading -->
+        <form method="post" enctype="multipart/form-data">
+        <!-- allow multiple imports of the sample (various related files) -->
+        <input type="file" name="ice_imports" multiple>
+
+        <!-- additional whitespace -->
+
+        <br></br>
+        <br></br>
+
+        <input type="submit" value="Upload File(s)">
+        </form>
+
+        <br></br>
+        <br></br>
+
+        <!-- php embedding -->
+        <!-- outside file -->
+
+        <!-- problem: cannot allow automatic upload to the backend -->
+
+        <?php
+            if (isset($_FILES['ice_imports'])) {
+                $myFile = $_FILES['ice_imports'];
+                $fileCounter = count($myFile["import"]);
+
+                for ($count = 0; $count < $fileCounter; $count++) {
+                    ?>
+
+                        <p>File #<?= $count + 1 ?>:</p>
+                        <p>
+                            Name: <?= $myFile["name"][$count] ?><br>
+                            Temporary file: <?= $myFile["tmp_name"][$count] ?><br>
+                            Type: <?= $myFile["type"][$count] ?><br>
+                            Size: <?= $myFile["size"][$count] ?><br>
+                            Error: <?= $myFile["error"][$count] ?><br>
+                        </p>
+                    <?php
+                }
+            }
+        ?>
+    </body>
+</html>
