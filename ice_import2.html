@@ -1,0 +1,41 @@
+<!-- file: ice_import2.html -->
+
+<!-- source:
+https://stackoverflow.com/questions/31404502/
+upload-multiple-files-in-angular
+-->
+
+<!DOCTYPE html>
+<html ng-app = "ICEImports">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Angular JS Ice Imports</title>
+    <script>document.write('<base href="'
+    + document.location + '" />');
+    </script>
+    <link href="style.css" rel="stylesheet" />
+    <script data-semver="1.4.3" src="https://code.angularjs.org/1.4.3/angular.js"
+            data-require="angular.js@1.4.x"></script>
+    <script src="directive.js"></script>
+
+    <!-- bootstrap extra -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<!-- NG controller module -->
+<body ng-controller="Main Control">
+    <p>Hello {{name}}!</p>
+    <input type="file" ng-file-model="files" multiple />
+    <button type="button" ng-click="upload()">Upload</button>
+
+    <!-- repeat the uploading action -->
+    <p ng-repeat="file in files">
+        {{file.name}}
+    </p>
+
+</body>
+</html>
