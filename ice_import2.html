@@ -11,8 +11,7 @@ upload-multiple-files-in-angular
 <head>
     <meta charset="UTF-8">
     <title>Angular JS Ice Imports</title>
-    <script>document.write('<base href="'
-    + document.location + '" />');
+    <script>document.write('<base href="' + document.location + '" />');
     </script>
     <link href="style.css" rel="stylesheet" />
     <script data-semver="1.4.3" src="https://code.angularjs.org/1.4.3/angular.js"
@@ -26,16 +25,91 @@ upload-multiple-files-in-angular
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
+<!-- aesthetics -->
+
+<!-- add the BDC logo, to make it official -->
+
+<br></br>
+
+<img src="https://ice.cidarlab.org/img/logo.png" class="img-rounded"
+alt="BDC Logo" width="200" height="68">
+
+<br></br>
+
+<!-- title bar -->
+<div class="span2">
+    <p><button type="button" class="btn btn-primary btn-block">Import ICE Samples in Bulk</button></p>
+</div>
+
+<!-- whitespace -->
+
+<br></br>
+<br></br>
+
+<!-- Note: as of right now, only the samples can be stored temporarily -->
+<alert>NOTE: The ICE Samples Can Only Be Stored Temporarily in the website.
+For full storage of the ICE samples, please refer to the full ICE documentation:
+<a href="http://ice.jbei.org/api/">Here</a></alert>
+
+<br></br>
+<br></br>
+
 <!-- NG controller module -->
-<body ng-controller="Main Control">
-    <p>Hello {{name}}!</p>
+<body ng-controller="MainCtrl">
+    <!-- <p>Hello {{name}}!</p> -->
+    <p> Hello CIDARLAB researcher! </p>
+    <p>Please put file(s) into the registry, and then click "Upload"
+    </p>
+
+    <!-- powder blue -->
+    <h2 style="background-color:#b5f7ff">Select The Files To Be Imported: </h2>
+
+    <p>Multiple Imports: </p>
+
+    <!-- source: https://jsfiddle.net/jasny/vtGxm/  -->
+
+    <!--
     <input type="file" ng-file-model="files" multiple />
     <button type="button" ng-click="upload()">Upload</button>
+
+    <input type="submit" ng-file-model="files" multiple />
+    <button type="button" ng-click="submit"></button>
+
+    -->
+
+    <br>
+    <input type="file" multiple>
+    <br>
+
+    <div class="fileinput fileinput-new" data-provides="fileinput">
+        <span class="btn btn-default btn-success">
+            <a href="https://ice.cidarlab.org/create/plasmid">Select File(s)</a></span>
+
+        <!-- allow the files to be stored as an attachment onto the ICE registry -->
+        <!-- for now, allow up to 3 various imports -->
+
+        <!--
+        <span class="fileinput-new">No file chosen</span>
+        -->
+
+    </div>
+
+    <br></br>
+
+    <a href="https://ice.cidarlab.org/folders/">Return to CIDAR ICE homepage</a>
+
+    <br></br>
 
     <!-- repeat the uploading action -->
     <p ng-repeat="file in files">
         {{file.name}}
     </p>
+
+    <!-- display the names of files uploaded -->
+    <!-- credit to Saltik Bugra Avci -->
+
+
+    <br></br>
 
 </body>
 </html>
